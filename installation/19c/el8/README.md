@@ -16,3 +16,14 @@ ln -s /lib64/libnsl.so.2 /lib64/libnsl.so.1
 
 # Guide
 https://docs.oracle.com/en/database/oracle/oracle-database/19/ladbi/running-rpm-packages-to-install-oracle-database.html
+
+# Post-Installation
+## Set Oracle Home and Oracle SID
+Create a file called `set-env.sh`. This will set the environment variable in the `.bashrc` file. You can run this on all the users that need access to Oracle Database. Replace `<SID>` with your instance ID.
+```bash
+echo '' >> $HOME/.bashrc; echo '#Oracle Environment Variables' >> $HOME/.bashrc
+echo 'export PATH="/opt/oracle/product/19c/dbhome_1/bin:$PATH"' >> $HOME/.bashrc
+echo 'export ORACLE_SID=<SID>' >> $HOME/.bashrc
+echo 'export ORACLE_HOME="/opt/oracle/product/19c/dbhome_1"' >> $HOME/.bashrc
+```
+Run `source .bashrc` after this.
